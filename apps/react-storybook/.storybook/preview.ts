@@ -6,15 +6,21 @@ import {
 	setStencilDocJson
 } from "@pxtrn/storybook-addon-docs-stencil";
 import docJson from "@kelvininc/ui-components/docs/docs.json";
+import { initialize, StyleMode } from '@kelvininc/ui-components';
+import { defineCustomElements } from '@kelvininc/ui-components/loader';
 
 import theme from "./themes/kelvin-theme";
 import { camelToKebab } from "./utils";
+
+defineCustomElements();
 
 if (docJson) {
 	setStencilDocJson(
 		docJson as unknown as Parameters<typeof setStencilDocJson>[0]
 	);
 }
+
+initialize({ styleMode: StyleMode.Night, baseAssetsUrl: '' });
 
 const preview: Preview = {
 	globalTypes: {
